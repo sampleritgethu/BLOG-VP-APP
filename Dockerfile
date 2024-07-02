@@ -20,10 +20,10 @@ RUN mvn package -DskipTests
 FROM openjdk:11.0.13-jre-slim
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR usr/app
 
 # Copy the packaged JAR file from the build stage
-COPY --from=build /app/target/*.jar app.jar
+COPY target/blogsapp.jar  usr/app/blogsapp.jar
 
 # Specify the command to run on container startup
 CMD ["java", "-jar", "app.jar"]
